@@ -5,10 +5,11 @@ options(repos = c(CRAN = "https://packagemanager.rstudio.com/all/__linux__/focal
 # Enable BioConductor repo
 utils::setRepositories(ind = 1:2)
 
-# Enable dev repo
+# Enable universe repo(s)
 my_universe <- Sys.getenv("MY_UNIVERSE")
 if(nchar(my_universe)){
-  options(repos = c(universe = my_universe, getOption("repos")))
+  my_repos <- trimws(strsplit(my_universe, ';')[[1]])
+  options(repos = c(universe = my_repos, getOption("repos")))
 }
 
 # Other settings
