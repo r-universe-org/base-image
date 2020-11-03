@@ -1,3 +1,4 @@
+LANG=en_US.UTF-8
 DISPLAY=""
 R_BROWSER="echo"
 R_PDFVIEWER="echo"
