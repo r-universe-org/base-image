@@ -17,7 +17,7 @@ RUN \
     libfftw3-dev libfreetype6-dev libhdf5-dev libhiredis-dev libarchive-dev libjpeg-dev libpng-dev librsvg2-dev \
     libsecret-1-dev libsodium-dev libssh-dev libssh2-1-dev libtiff-dev libwebp-dev libnetcdf-dev libsasl2-dev \
     libzmq3-dev zlib1g-dev libglpk-dev librdf0-dev libglu1-mesa-dev libgsl-dev libharfbuzz-dev libfribidi-dev \
-    coinor-libsymphony-dev libapparmor-dev r-cran-rjava hugo
+    coinor-libsymphony-dev libapparmor-dev r-cran-rjava jags hugo
 
 COPY Renviron /etc/R/Renviron.site
 COPY Rprofile /etc/R/Rprofile.site
