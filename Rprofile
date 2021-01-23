@@ -14,3 +14,4 @@ if(nchar(my_universe)){
 
 # Other settings
 options(crayon.enabled = TRUE)
+Sys.unsetenv(c("CI", "GITHUB_ACTIONS"))
