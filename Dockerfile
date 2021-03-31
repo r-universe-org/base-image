@@ -22,3 +22,9 @@ RUN \
 
 COPY Renviron /etc/R/Renviron.site
 COPY Rprofile /etc/R/Rprofile.site
+
+# Install TinyTex + common packages and put it on the PATH
+RUN R -e 'install.packages("tinytex");tinytex::install_tinytex();tinytex:::install_yihui_pkgs()'
+
+# NB: Docker says $HOME should be available but it isnt so we hardcode /root for now
+ENV PATH="/root/bin:${PATH}"
