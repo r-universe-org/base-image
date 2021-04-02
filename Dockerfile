@@ -23,8 +23,10 @@ RUN \
 COPY Renviron /etc/R/Renviron.site
 COPY Rprofile /etc/R/Rprofile.site
 
-# Install TinyTex + common packages and put it on the PATH
-RUN R -e 'install.packages("tinytex");tinytex:::install_prebuilt("TinyTeX")'
-
 # NB: Docker says $HOME should be available but it isnt so we hardcode /root for now
 ENV PATH="/root/bin:${PATH}"
+
+# Install TinyTex + common packages and put it on the PATH
+RUN R -e 'install.packages("tinytex");tinytex:::install_prebuilt("TinyTeX")' && \
+    rm -f TinyTeX.tar.gz && \
+    tlmgr option repository https://ctan.math.illinois.edu/systems/texlive/tlnet
