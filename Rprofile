@@ -2,8 +2,8 @@
 options(HTTPUserAgent = sprintf("R/%s R (%s)", getRversion(), paste(getRversion(), R.version$platform, R.version$arch, R.version$os)))
 options(repos = c(CRAN = "https://packagemanager.rstudio.com/all/__linux__/focal/latest"))
 
-# Enable BioConductor repo
-utils::setRepositories(ind = 1:3)
+# Enable BioConductor repos
+utils::setRepositories(ind = 1:4)
 
 # Enable universe repo(s)
 my_universe <- Sys.getenv("MY_UNIVERSE")
