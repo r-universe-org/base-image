@@ -1,3 +1,4 @@
+local({
 # Use RSPM for CRAN
 options(HTTPUserAgent = sprintf("R/%s R (%s)", getRversion(), paste(getRversion(), R.version$platform, R.version$arch, R.version$os)))
 options(repos = c(CRAN = "https://packagemanager.rstudio.com/all/__linux__/focal/latest"))
@@ -15,3 +16,5 @@ if(nchar(my_universe)){
 # Other settings
 options(crayon.enabled = TRUE)
 Sys.unsetenv(c("CI", "GITHUB_ACTIONS"))
+})
+
