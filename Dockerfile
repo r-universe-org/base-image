@@ -18,7 +18,7 @@ RUN \
     libsecret-1-dev libsodium-dev libssh-dev libssh2-1-dev libtiff-dev libwebp-dev libnetcdf-dev libsasl2-dev \
     libzmq3-dev zlib1g-dev libglpk-dev librdf0-dev libglu1-mesa-dev libgsl-dev libharfbuzz-dev libfribidi-dev \
     coinor-libsymphony-dev libapparmor-dev libelf-dev libmpfr-dev libboost-program-options-dev librrd-dev \
-    r-cran-rjava jags hugo ttf-mscorefonts-installer fonts-emojione texinfo cmake python3-numpy ctags global && \
+    r-cran-rjava jags hugo ttf-mscorefonts-installer fonts-emojione texinfo cmake python3-numpy global && \
     apt-get clean
 
 COPY Renviron /etc/R/Renviron.site
