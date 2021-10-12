@@ -9,7 +9,7 @@ RUN \
     add-apt-repository -y ppa:marutter/rrutter4.0 && \
     add-apt-repository -y "ppa:c2d4u.team/c2d4u4.0+" && \
     apt-get update && \
-    apt-get install -y git curl pandoc pandoc-citeproc r-base-dev libcurl4-gnutls-dev libssl-dev \
+    apt-get install -y git wget curl pandoc pandoc-citeproc r-base-dev libcurl4-gnutls-dev libssl-dev \
     libgdal-dev libgeos-dev libproj-dev libopencv-dev libtesseract-dev tesseract-ocr-eng libmagick++-dev \
     libprotoc-dev libprotobuf-dev protobuf-compiler libgit2-dev libxml2-dev libxslt-dev libudunits2-dev \
     libpoppler-cpp-dev libsodium-dev libjq-dev libicu-dev libavfilter-dev cargo libv8-dev libmysqlclient-dev \
