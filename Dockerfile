@@ -9,7 +9,7 @@ RUN \
     add-apt-repository -y ppa:marutter/rrutter4.0 && \
     add-apt-repository -y "ppa:c2d4u.team/c2d4u4.0+" && \
     apt-get update && \
-    apt-get install -y git wget curl pandoc pandoc-citeproc r-base-dev libcurl4-gnutls-dev libssl-dev \
+    apt-get install -y git wget curl r-base-dev libcurl4-gnutls-dev libssl-dev \
     libgdal-dev libgeos-dev libproj-dev libopencv-dev libtesseract-dev tesseract-ocr-eng libmagick++-dev \
     libprotoc-dev libprotobuf-dev protobuf-compiler libgit2-dev libxml2-dev libxslt-dev libudunits2-dev \
     libpoppler-cpp-dev libsodium-dev libjq-dev libicu-dev libavfilter-dev cargo libv8-dev libmysqlclient-dev \
@@ -20,6 +20,12 @@ RUN \
     coinor-libsymphony-dev libapparmor-dev libelf-dev libmpfr-dev libboost-program-options-dev librrd-dev \
     r-cran-rjava jags hugo ttf-mscorefonts-installer fonts-emojione texinfo cmake python3-numpy python3-pip global iputils-ping && \
     apt-get clean
+
+# The pandoc package in ubuntu 20.04 seems too old for certain things
+RUN \
+  curl -OL "https://github.com/jgm/pandoc/releases/download/2.16.2/pandoc-2.16.2-linux-amd64.tar.gz" &&\
+  tar xzvf pandoc-2.16.2-linux-amd64.tar.gz -C/usr/local --strip 1 &&\
+  rm pandoc-2.16.2-linux-amd64.tar.gz
 
 COPY Renviron /etc/R/Renviron.site
 COPY Rprofile /etc/R/Rprofile.site
