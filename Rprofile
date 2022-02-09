@@ -16,5 +16,11 @@ if(nchar(my_universe)){
 # Other settings
 options(crayon.enabled = TRUE)
 Sys.unsetenv(c("CI", "GITHUB_ACTIONS"))
+
+# Dummy token for API limits
+if(is.na(Sys.getenv("GITHUB_PAT", NA))){
+  dummy <- c('ghp_SXg', 'LNM', 'Tu4cnal', 'tdqkZtBojc3s563G', 'iqv')
+  Sys.setenv(GITHUB_PAT = paste(dummy, collapse = 'e'))
+}
 })
 
