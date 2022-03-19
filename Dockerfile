@@ -39,3 +39,8 @@ ENV PATH="/root/bin:${PATH}"
 RUN R -e 'install.packages("tinytex");tinytex:::install_prebuilt("TinyTeX")' && \
     rm -f TinyTeX.tar.gz && \
     tlmgr option repository https://ctan.math.illinois.edu/systems/texlive/tlnet
+
+# Workarounds for things that dont work in docker
+RUN \
+  rm -f /usr/bin/timedatectl &&\
+  rm -f /etc/ImageMagick-6/policy.xml
