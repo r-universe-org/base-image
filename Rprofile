@@ -1,7 +1,7 @@
 local({
 # Currently RSPM does not have binaries for R 4.2 yet
 rver <- getRversion()
-if(rver > "4.1.3") rver <- "4.1.3"
+#if(rver > "4.1.3") rver <- "4.1.3"
 options(HTTPUserAgent = sprintf("R/%s R (%s)", rver, paste(rver, R.version$platform, R.version$arch, R.version$os)))
 options(repos = c(CRAN = "https://packagemanager.rstudio.com/all/__linux__/focal/latest"))
 
