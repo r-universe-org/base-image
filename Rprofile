@@ -3,7 +3,7 @@ local({
 rver <- getRversion()
 #if(rver > "4.1.3") rver <- "4.1.3"
 options(HTTPUserAgent = sprintf("R/%s R (%s)", rver, paste(rver, R.version$platform, R.version$arch, R.version$os)))
-options(repos = c(CRAN = "https://packagemanager.rstudio.com/all/__linux__/focal/latest"))
+options(repos = c(CRAN = "https://packagemanager.rstudio.com/all/__linux__/jammy/latest"))
 
 # Enable BioConductor repos
 utils::setRepositories(ind = 1:4, addURLs = c(fallback = "https://cloud.r-project.org"))
