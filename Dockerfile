@@ -2,7 +2,7 @@ FROM ubuntu:jammy
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# Skip librdf0-dev because dependency libcurl4-gnutls-dev conflicts with libcurl4-openssl-dev
+# Skip librdf0-dev because dependency libcurl4-gnutls-dev conflicts with libcurl4-openssl-dev but we do install librdf0 so that at least rspm binaries work.
 
 RUN \
     apt-get update && \
@@ -20,7 +20,7 @@ RUN \
     libsecret-1-dev libsodium-dev libssh-dev libssh2-1-dev libtiff-dev libwebp-dev libnetcdf-dev libsasl2-dev \
     libzmq3-dev zlib1g-dev libglpk-dev libglu1-mesa-dev libgsl-dev libharfbuzz-dev libfribidi-dev libnng-dev \
     coinor-libsymphony-dev libapparmor-dev libelf-dev libmpfr-dev libboost-program-options-dev libboost-filesystem-dev \
-    librrd-dev librabbitmq-dev libopenblas0 \
+    librrd-dev librabbitmq-dev libopenblas0 librdf0 \
     r-cran-rjava jags hugo ttf-mscorefonts-installer fonts-emojione texinfo cmake python3-numpy python3-pip global iputils-ping && \
     apt-get clean
 
