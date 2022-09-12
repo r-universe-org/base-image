@@ -2,8 +2,6 @@ FROM ubuntu:jammy
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# Skip librdf0-dev because dependency libcurl4-gnutls-dev conflicts with libcurl4-openssl-dev but we do install librdf0 so that at least rspm binaries work.
-
 RUN \
     apt-get update && \
     apt-get -y dist-upgrade && \
@@ -22,6 +20,13 @@ RUN \
     coinor-libsymphony-dev libapparmor-dev libelf-dev libmpfr-dev libboost-program-options-dev libboost-filesystem-dev \
     librrd-dev librabbitmq-dev libbam-dev libopenblas0 librdf0 rsync \
     r-cran-rjava jags hugo ttf-mscorefonts-installer fonts-emojione texinfo cmake python3-numpy python3-pip global iputils-ping && \
+    apt-get clean
+
+
+# Patched libraptor2-dev because dependency libcurl4-gnutls-dev conflicts with libcurl4-openssl-dev
+RUN \
+    add-apt-repository -y ppa:cran/librdf && \
+    apt-get install -y librdf0-dev && \
     apt-get clean
 
 # The pandoc package in ubuntu 20.04 seems too old for certain things
