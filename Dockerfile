@@ -24,15 +24,6 @@ RUN \
     r-cran-rjava jags hugo ttf-mscorefonts-installer fonts-emojione texinfo cmake python3-numpy python3-pip global iputils-ping && \
     apt-get clean
 
-# Workaround for the librdf0-dev dependency on libcurl4-gnutls-dev
-RUN apt-get install -y equivs &&\
-  equivs-control libcurl4-gnutls-dev && \
-  sed -i 's/Package:.*/Package: libcurl4-gnutls-dev/' libcurl4-gnutls-dev && \
-  equivs-build libcurl4-gnutls-dev && \
-  dpkg -i libcurl4-gnutls-dev_1.0_all.deb && \
-  apt-get install -y librdf0-dev && \
-  apt-get clean
-
 # The pandoc package in ubuntu 20.04 seems too old for certain things
 RUN \
   curl -OL "https://github.com/jgm/pandoc/releases/download/2.16.2/pandoc-2.16.2-linux-amd64.tar.gz" &&\
