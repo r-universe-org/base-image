@@ -1,7 +1,8 @@
 local({
 rver <- getRversion()
+distro <- system2('lsb_release', '-sc', stdout = TRUE)
 options(HTTPUserAgent = sprintf("R/%s R (%s)", rver, paste(rver, R.version$platform, R.version$arch, R.version$os)))
-options(repos = c(CRAN = "https://packagemanager.rstudio.com/all/__linux__/jammy/latest"))
+options(repos = c(CRAN = sprintf("https://packagemanager.rstudio.com/all/__linux__/%s/latest", distro)))
 
 # Enable BioConductor repos
 utils::setRepositories(ind = 1:4, addURLs = c(fallback = "https://cloud.r-project.org"))
@@ -10,7 +11,8 @@ utils::setRepositories(ind = 1:4, addURLs = c(fallback = "https://cloud.r-projec
 my_universe <- Sys.getenv("MY_UNIVERSE")
 if(nchar(my_universe)){
   my_repos <- trimws(strsplit(my_universe, ';')[[1]])
-  options(repos = c(universe = my_repos, getOption("repos")))
+  binaries <- sprintf('%s/bin/linux/%s/%s', my_repos[1], distro, substr(rver, 1, 3))
+  options(repos = c(binaries = binaries, universe = my_repos, getOption("repos")))
 }
 
 # Other settings
@@ -23,4 +25,3 @@ if(is.na(Sys.getenv("GITHUB_PAT", NA))){
   Sys.setenv(GITHUB_PAT = paste(dummy, collapse = 'e'))
 }
 })
-
