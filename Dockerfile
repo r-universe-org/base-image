@@ -2,12 +2,14 @@ FROM ubuntu:jammy
 
 ENV DEBIAN_FRONTEND noninteractive
 
+# R-patched ppa can be removed after 4.2.3 release
+
 RUN \
     apt-get update && \
     apt-get -y dist-upgrade && \
     apt-get install -y software-properties-common && \
     add-apt-repository -y ppa:marutter/rrutter4.0 && \
-#    add-apt-repository -y "ppa:c2d4u.team/c2d4u4.0+" && \
+    add-apt-repository -y ppa:cran/r-patched && \
     apt-get update && \
     apt-get install -y git wget curl r-base-dev libcurl4-openssl-dev libssl-dev \
     libgdal-dev libgeos-dev libproj-dev libopencv-dev libtesseract-dev tesseract-ocr-eng libmagick++-dev \
