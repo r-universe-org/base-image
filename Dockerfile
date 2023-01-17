@@ -17,6 +17,7 @@ RUN \
     coinor-libcbc-dev  \
     coinor-libsymphony-dev \
     curl \
+    flac \
     fonts-emojione \
     git \
     global \
