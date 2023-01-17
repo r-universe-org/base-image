@@ -11,17 +11,91 @@ RUN \
     add-apt-repository -y ppa:marutter/rrutter4.0 && \
     add-apt-repository -y ppa:cran/r-patched && \
     apt-get update && \
-    apt-get install -y git wget curl r-base-dev libcurl4-openssl-dev libssl-dev \
-    libgdal-dev libgeos-dev libproj-dev libopencv-dev libtesseract-dev tesseract-ocr-eng libmagick++-dev \
-    libprotoc-dev libprotobuf-dev protobuf-compiler libgit2-dev libxml2-dev libxslt-dev libudunits2-dev \
-    libpoppler-cpp-dev libsodium-dev libjq-dev libicu-dev libavfilter-dev cargo libv8-dev libmysqlclient-dev \
-    unixodbc-dev libpq-dev language-pack-en-base libgpgme-dev libdb-dev libcairo2-dev coinor-libcbc-dev  \
-    libfftw3-dev libfreetype6-dev libhdf5-dev libhiredis-dev libarchive-dev libjpeg-dev libpng-dev librsvg2-dev \
-    libsecret-1-dev libsodium-dev libssh-dev libssh2-1-dev libtiff-dev libwebp-dev libnetcdf-dev libsasl2-dev \
-    libzmq3-dev zlib1g-dev libglpk-dev libglu1-mesa-dev libgsl-dev libharfbuzz-dev libfribidi-dev libnng-dev \
-    coinor-libsymphony-dev libapparmor-dev libelf-dev libmpfr-dev libboost-program-options-dev libboost-filesystem-dev \
-    librrd-dev librabbitmq-dev libbam-dev libopenblas0 librdf0 rsync libeigen3-dev libopenbabel-dev \
-    r-cran-rjava jags hugo ttf-mscorefonts-installer fonts-emojione texinfo cmake python3-numpy python3-pip global iputils-ping && \
+    apt-get install -y \
+    cargo \
+    cmake \
+    coinor-libcbc-dev  \
+    coinor-libsymphony-dev \
+    curl \
+    fonts-emojione \
+    git \
+    global \
+    hugo \
+    iputils-ping && \
+    jags \
+    language-pack-en-base \
+    libapparmor-dev \
+    libarchive-dev \
+    libavfilter-dev \
+    libbam-dev \
+    libboost-filesystem-dev \
+    libboost-program-options-dev \
+    libcairo2-dev \
+    libcurl4-openssl-dev \
+    libdb-dev \
+    libeigen3-dev \
+    libelf-dev \
+    libfftw3-dev \
+    libfreetype6-dev \
+    libfribidi-dev \
+    libgdal-dev \
+    libgeos-dev \
+    libgit2-dev \
+    libglpk-dev \
+    libglu1-mesa-dev \
+    libgpgme-dev \
+    libgsl-dev \
+    libharfbuzz-dev \
+    libhdf5-dev \
+    libhiredis-dev \
+    libicu-dev \
+    libjpeg-dev \
+    libjq-dev \
+    libmagick++-dev \
+    libmpfr-dev \
+    libmysqlclient-dev \
+    libnetcdf-dev \
+    libnng-dev \
+    libopenbabel-dev \
+    libopenblas0 \
+    libopencv-dev \
+    libpng-dev \
+    libpoppler-cpp-dev \
+    libpq-dev \
+    libproj-dev \
+    libprotobuf-dev \
+    libprotoc-dev \
+    librabbitmq-dev \
+    librdf0 \
+    librrd-dev \
+    librsvg2-dev \
+    libsasl2-dev \
+    libsecret-1-dev \
+    libsodium-dev \
+    libsodium-dev \
+    libssh-dev \
+    libssh2-1-dev \
+    libssl-dev \
+    libtesseract-dev \
+    libtiff-dev \
+    libudunits2-dev \
+    libv8-dev \
+    libwebp-dev \
+    libxml2-dev \
+    libxslt-dev \
+    libzmq3-dev \
+    protobuf-compiler \
+    python3-numpy \
+    python3-pip \
+    r-base-dev \
+    r-cran-rjava \
+    rsync \
+    tesseract-ocr-eng \
+    texinfo \
+    ttf-mscorefonts-installer \
+    unixodbc-dev \
+    wget \
+    zlib1g-dev && \
     apt-get clean
 
 
