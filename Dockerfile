@@ -2,14 +2,12 @@ FROM ubuntu:jammy
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# R-patched ppa can be removed after 4.2.3 release
-
 RUN \
     apt-get update && \
     apt-get -y dist-upgrade && \
     apt-get install -y software-properties-common && \
     add-apt-repository -y ppa:marutter/rrutter4.0 && \
-    add-apt-repository -y ppa:cran/r-patched && \
+    add-apt-repository -y ppa:ubuntu-mozilla-security/rust-next && \
     apt-get update && \
     apt-get install -y \
     cargo \
@@ -21,7 +19,7 @@ RUN \
     git \
     global \
     hugo \
-    iputils-ping && \
+    iputils-ping \
     jags \
     language-pack-en-base \
     libapparmor-dev \
