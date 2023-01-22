@@ -7,7 +7,7 @@ RUN \
     apt-get -y dist-upgrade && \
     apt-get install -y software-properties-common && \
     add-apt-repository -y ppa:marutter/rrutter4.0 && \
-    add-apt-repository -y ppa:ubuntu-mozilla-security/rust-next && \
+    add-apt-repository -y ppa:ubuntu-mozilla-security/rust-updates && \
     apt-get update && \
     apt-get install -y \
     cargo \
