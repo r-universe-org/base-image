@@ -90,6 +90,7 @@ RUN \
     rsync \
     tesseract-ocr-eng \
     texinfo \
+    tk-dev \
     ttf-mscorefonts-installer \
     unixodbc-dev \
     wget \
