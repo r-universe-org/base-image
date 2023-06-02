@@ -110,6 +110,11 @@ RUN \
   tar xzvf pandoc-2.16.2-linux-amd64.tar.gz -C/usr/local --strip 1 &&\
   rm pandoc-2.16.2-linux-amd64.tar.gz
 
+RUN \
+  curl -OL "https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.361/quarto-1.3.361-linux-amd64.deb" &&\
+  dpkg -i quarto-1.3.361-linux-amd64.deb &&\
+  rm quarto-1.3.361-linux-amd64.deb
+
 COPY Renviron /etc/R/Renviron.site
 COPY Rprofile /etc/R/Rprofile.site
 
