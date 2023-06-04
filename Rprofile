@@ -2,7 +2,7 @@ local({
 rver <- getRversion()
 distro <- system2('lsb_release', '-sc', stdout = TRUE)
 options(HTTPUserAgent = sprintf("R/%s R (%s)", rver, paste(rver, R.version$platform, R.version$arch, R.version$os)))
-options(repos = c(CRAN = sprintf("https://packagemanager.rstudio.com/all/__linux__/%s/latest", distro)))
+options(repos = c(CRAN = sprintf("https://packagemanager.posit.co/all/__linux__/%s/latest", distro)))
 
 # Enable BioConductor repos
 utils::setRepositories(ind = 1:4, addURLs = c(fallback = "https://cloud.r-project.org"))
