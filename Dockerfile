@@ -2,15 +2,16 @@ FROM ubuntu:jammy
 
 ENV DEBIAN_FRONTEND noninteractive
 
+# Disabled for now because a bit outdated:
+# add-apt-repository -y ppa:ubuntu-mozilla-security/rust-updates
+
 RUN \
     apt-get update && \
     apt-get -y dist-upgrade && \
     apt-get install -y software-properties-common && \
     add-apt-repository -y ppa:marutter/rrutter4.0 && \
-    add-apt-repository -y ppa:ubuntu-mozilla-security/rust-updates && \
     apt-get update && \
     apt-get install -y \
-    cargo \
     cmake \
     coinor-libcbc-dev  \
     coinor-libsymphony-dev \
@@ -114,6 +115,9 @@ RUN \
   curl -OL "https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.361/quarto-1.3.361-linux-amd64.deb" &&\
   dpkg -i quarto-1.3.361-linux-amd64.deb &&\
   rm quarto-1.3.361-linux-amd64.deb
+
+RUN \
+  url --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
 
 COPY Renviron /etc/R/Renviron.site
 COPY Rprofile /etc/R/Rprofile.site
