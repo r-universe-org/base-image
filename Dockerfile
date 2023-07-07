@@ -116,9 +116,12 @@ RUN \
   dpkg -i quarto-1.3.361-linux-amd64.deb &&\
   rm quarto-1.3.361-linux-amd64.deb
 
+ENV CARGO_HOME="/opt/.cargo"
+ENV RUSTUP_HOME="/opt/.rustup"
+ENV PATH="$PATH:/opt/.cargo/bin"
+
 RUN \
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y &&\
-  (cd /usr/local/bin; ln -s $HOME/.cargo/bin/* .)
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
 
 COPY Renviron /etc/R/Renviron.site
 COPY Rprofile /etc/R/Rprofile.site
