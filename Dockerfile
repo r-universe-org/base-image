@@ -117,7 +117,8 @@ RUN \
   rm quarto-1.3.361-linux-amd64.deb
 
 RUN \
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y &&\
+  (cd /usr/local/bin; ln -s $HOME/.cargo/bin/* .)
 
 COPY Renviron /etc/R/Renviron.site
 COPY Rprofile /etc/R/Rprofile.site
