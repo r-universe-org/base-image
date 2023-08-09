@@ -60,6 +60,7 @@ RUN \
     libopencv-dev \
     libpng-dev \
     libpoppler-cpp-dev \
+    libpoppler-glib-dev \
     libpq-dev \
     libproj-dev \
     libprotobuf-dev \
