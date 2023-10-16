@@ -4,7 +4,7 @@ A docker image for building R source packages and documentation. Contains:
 
  - Latest Ubuntu LTS release
  - Current stable R-release version
- - Rprofile which enables RSPM binaries for CRAN packages
+ - Rprofile which enables [p3m binaries](https://p3m.dev) for CRAN packages
  - Commonly needed system libraries for R packages
  - A TinyTex installation
 
