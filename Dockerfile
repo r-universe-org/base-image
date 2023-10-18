@@ -104,6 +104,7 @@ RUN \
 RUN \
     add-apt-repository -y ppa:cran/librdf && \
     apt-get install -y librdf0-dev && \
+    rm -fv /etc/apt/sources.list.d/* && \
     apt-get clean
 
 # The pandoc package in ubuntu 20.04 seems too old for certain things
