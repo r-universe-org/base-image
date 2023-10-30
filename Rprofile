@@ -15,6 +15,9 @@ if(nchar(my_universe)){
   options(repos = c(binaries = binaries, universe = my_repos, getOption("repos")))
 }
 
+# Temp workaround for archived rgdal/geos stuff
+options(repos = c(getOption("repos"), snapshot = "https://p3m.dev/cran/2023-10-13/"))
+
 # Other settings
 options(crayon.enabled = TRUE)
 Sys.unsetenv(c("CI", "GITHUB_ACTIONS"))
