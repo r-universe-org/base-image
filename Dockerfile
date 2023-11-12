@@ -52,6 +52,7 @@ RUN \
     libjpeg-dev \
     libjq-dev \
     libmagick++-dev \
+    libmpc-dev \
     libmpfr-dev \
     libmysqlclient-dev \
     libnetcdf-dev \
