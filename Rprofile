@@ -16,7 +16,7 @@ if(nchar(my_universe)){
 }
 
 # Temp workaround for recently archived rgdal/geos/bioc things
-options(repos = c(getOption("repos"), snapshot = "https://p3m.dev/cran/2023-10-13/", oldbioc = "https://bioconductor.org/packages/3.17/bioc"))
+# options(repos = c(getOption("repos"), snapshot = "https://p3m.dev/cran/2023-10-13/", oldbioc = "https://bioconductor.org/packages/3.17/bioc"))
 
 # Other settings
 options(crayon.enabled = TRUE)
