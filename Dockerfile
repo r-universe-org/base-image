@@ -44,6 +44,7 @@ RUN \
     libglpk-dev \
     libglu1-mesa-dev \
     libgpgme-dev \
+    libgrpc++-dev \
     libgsl-dev \
     libharfbuzz-dev \
     libhdf5-dev \
@@ -87,6 +88,7 @@ RUN \
     libxslt-dev \
     libzmq3-dev \
     protobuf-compiler \
+    protobuf-compiler-grpc \
     python3-numpy \
     python3-pip \
     r-base-dev \
