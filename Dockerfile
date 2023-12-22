@@ -118,9 +118,9 @@ RUN \
   rm pandoc-2.16.2-linux-amd64.tar.gz
 
 RUN \
-  curl -OL "https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.361/quarto-1.3.361-linux-amd64.deb" &&\
-  dpkg -i quarto-1.3.361-linux-amd64.deb &&\
-  rm quarto-1.3.361-linux-amd64.deb
+  curl -OL "https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.450/quarto-1.3.450-linux-amd64.deb" &&\
+  dpkg -i quarto-1.3.450-linux-amd64.deb &&\
+  rm quarto-1.3.450-linux-amd64.deb
 
 ENV CARGO_HOME="/opt/.cargo"
 ENV RUSTUP_HOME="/opt/.rustup"
