@@ -1,5 +1,4 @@
 LANG=en_US.UTF-8
-DISPLAY=""
 R_BROWSER="echo"
 R_PDFVIEWER="echo"
 RGL_USE_NULL=TRUE
@@ -12,3 +11,6 @@ USE_SYSTEM_LIBGIT2=1
 ARROW_R_DEV=true
 #LIBARROW_MINIMAL=true
 R_BIOC_VERSION=3.18
+
+#Do not set here, should match xvbf command
+#DISPLAY=""

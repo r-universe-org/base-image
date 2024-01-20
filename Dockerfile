@@ -100,6 +100,7 @@ RUN \
     ttf-mscorefonts-installer \
     unixodbc-dev \
     wget \
+    xvfb \
     zlib1g-dev && \
     apt-get clean
 
