@@ -87,6 +87,7 @@ RUN \
     libxml2-dev \
     libxslt-dev \
     libzmq3-dev \
+    ocl-icd-opencl-dev \
     protobuf-compiler \
     protobuf-compiler-grpc \
     python3-numpy \
