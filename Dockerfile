@@ -61,6 +61,7 @@ RUN \
     libopenbabel-dev \
     libopenblas0 \
     libopencv-dev \
+    libopenmpi-dev \
     libpng-dev \
     libpoppler-cpp-dev \
     libpoppler-glib-dev \
