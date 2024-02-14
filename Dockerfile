@@ -36,6 +36,7 @@ RUN \
     libeigen3-dev \
     libelf-dev \
     libfftw3-dev \
+    libfluidsynth-dev \
     libfreetype6-dev \
     libfribidi-dev \
     libgdal-dev \
