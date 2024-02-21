@@ -115,16 +115,16 @@ RUN \
     rm -fv /etc/apt/sources.list.d/* && \
     apt-get clean
 
-# The pandoc package in ubuntu 20.04 seems too old for certain things
+# Use recent pandoc for quarto
 RUN \
-  curl -OL "https://github.com/jgm/pandoc/releases/download/2.16.2/pandoc-2.16.2-linux-amd64.tar.gz" &&\
-  tar xzvf pandoc-2.16.2-linux-amd64.tar.gz -C/usr/local --strip 1 &&\
-  rm pandoc-2.16.2-linux-amd64.tar.gz
+  curl -OL "https://github.com/jgm/pandoc/releases/download/3.1.12.1/pandoc-3.1.12.1-linux-amd64.tar.gz" &&\
+  tar xzvf pandoc-3.1.12.1-linux-amd64.tar.gz -C/usr/local --strip 1 &&\
+  rm pandoc-3.1.12.1-linux-amd64.tar.gz
 
 RUN \
-  curl -OL "https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.450/quarto-1.3.450-linux-amd64.deb" &&\
-  dpkg -i quarto-1.3.450-linux-amd64.deb &&\
-  rm quarto-1.3.450-linux-amd64.deb
+  curl -OL "https://github.com/quarto-dev/quarto-cli/releases/download/v1.4.550/quarto-1.4.550-linux-amd64.deb" &&\
+  dpkg -i quarto-1.4.550-linux-amd64.deb &&\
+  rm quarto-1.4.550-linux-amd64.deb
 
 ENV CARGO_HOME="/opt/.cargo"
 ENV RUSTUP_HOME="/opt/.rustup"
