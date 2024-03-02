@@ -1,9 +1,11 @@
-FROM ubuntu:jammy
+FROM ubuntu:jammy AS base_image
 
 ENV DEBIAN_FRONTEND noninteractive
+ENV CARGO_HOME="/opt/.cargo"
+ENV RUSTUP_HOME="/opt/.rustup"
+ENV PATH="/root/bin:/opt/.cargo/bin:${PATH}"
 
-# Disabled for now because a bit outdated:
-# add-apt-repository -y ppa:ubuntu-mozilla-security/rust-updates
+FROM base_image as builder
 
 RUN \
     apt-get update && \
@@ -126,18 +128,11 @@ RUN \
   dpkg -i quarto-1.4.550-linux-amd64.deb &&\
   rm quarto-1.4.550-linux-amd64.deb
 
-ENV CARGO_HOME="/opt/.cargo"
-ENV RUSTUP_HOME="/opt/.rustup"
-ENV PATH="$PATH:/opt/.cargo/bin"
-
 RUN \
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
 
 COPY Renviron /etc/R/Renviron.site
 COPY Rprofile /etc/R/Rprofile.site
-
-# NB: Docker says $HOME should be available but it isnt so we hardcode /root for now
-ENV PATH="/root/bin:${PATH}"
 
 # Install TinyTex + common packages and put it on the PATH
 RUN R -e 'install.packages("tinytex");tinytex:::install_prebuilt("TinyTeX")' && \
@@ -149,3 +144,7 @@ RUN \
   rm -f /usr/bin/timedatectl &&\
   rm -f /etc/ImageMagick-6/policy.xml &&\
   sed -i.bak 's|-g ||g' /etc/R/Makeconf
+
+# Squash builder image into
+FROM base_image
+COPY --from=builder / /
