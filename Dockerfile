@@ -92,6 +92,7 @@ RUN \
     libxml2-dev \
     libxslt-dev \
     libzmq3-dev \
+    mono-runtime \
     ocl-icd-opencl-dev \
     protobuf-compiler \
     protobuf-compiler-grpc \
