@@ -77,6 +77,7 @@ RUN \
     librrd-dev \
     librsvg2-dev \
     libsasl2-dev \
+    libsbml5-dev \
     libsecret-1-dev \
     libsodium-dev \
     libsodium-dev \
