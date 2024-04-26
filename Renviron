@@ -10,6 +10,8 @@ DISABLE_STATIC_LIBV8=1
 USE_SYSTEM_LIBGIT2=1
 ARROW_R_DEV=true
 #LIBARROW_MINIMAL=true
+
+# Should be 'devel' version
 R_BIOC_VERSION=3.19
 
 #Do not set here, should match xvbf command
