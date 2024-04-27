@@ -1,4 +1,4 @@
-FROM ubuntu:jammy AS base_image
+FROM ubuntu:noble AS base_image
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV CARGO_HOME="/opt/.cargo"
