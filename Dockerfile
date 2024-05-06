@@ -113,11 +113,12 @@ RUN \
 
 
 # Patched libraptor2-dev because dependency libcurl4-gnutls-dev conflicts with libcurl4-openssl-dev
-RUN \
-    add-apt-repository -y ppa:cran/librdf && \
-    apt-get install -y librdf0-dev && \
-    rm -fv /etc/apt/sources.list.d/* && \
-    apt-get clean
+# This is only for ubuntu-jammy; is this no longer needed or should we port it?
+#RUN \
+#    add-apt-repository -y ppa:cran/librdf && \
+#    apt-get install -y librdf0-dev && \
+#    rm -fv /etc/apt/sources.list.d/* && \
+#    apt-get clean
 
 # Use recent pandoc for quarto
 RUN \
