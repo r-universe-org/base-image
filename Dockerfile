@@ -141,7 +141,8 @@ COPY Rprofile /etc/R/Rprofile.site
 # Install TinyTex + common packages and put it on the PATH
 RUN R -e 'install.packages("tinytex");tinytex:::install_prebuilt("TinyTeX")' && \
     rm -f TinyTeX.tar.gz && \
-    tlmgr option repository https://ctan.math.illinois.edu/systems/texlive/tlnet
+    tlmgr option repository https://ctan.math.illinois.edu/systems/texlive/tlnet &&\
+    tlmgr install inputenx
 
 # Disable debug flags and things that dont work in docker
 RUN \
