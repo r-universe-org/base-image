@@ -124,14 +124,14 @@ RUN \
 
 # Use recent pandoc for quarto
 RUN \
-  curl -OL "https://github.com/jgm/pandoc/releases/download/3.1.12.1/pandoc-3.1.12.1-linux-amd64.tar.gz" &&\
-  tar xzvf pandoc-3.1.12.1-linux-amd64.tar.gz -C/usr/local --strip 1 &&\
-  rm pandoc-3.1.12.1-linux-amd64.tar.gz
+  curl -OL "https://github.com/jgm/pandoc/releases/download/3.2.1/pandoc-3.2.1-linux-amd64.tar.gz" &&\
+  tar xzvf pandoc-3.2.1-linux-amd64.tar.gz -C/usr/local --strip 1 &&\
+  rm pandoc-3.2.1-linux-amd64.tar.gz
 
 RUN \
-  curl -OL "https://github.com/quarto-dev/quarto-cli/releases/download/v1.4.550/quarto-1.4.550-linux-amd64.deb" &&\
-  dpkg -i quarto-1.4.550-linux-amd64.deb &&\
-  rm quarto-1.4.550-linux-amd64.deb
+  curl -OL "https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.54/quarto-1.5.54-linux-amd64.deb" &&\
+  dpkg -i quarto-1.5.54-linux-amd64.deb &&\
+  rm quarto-1.5.54-linux-amd64.deb
 
 RUN \
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
