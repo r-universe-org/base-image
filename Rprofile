@@ -8,9 +8,9 @@ local({
   bioc_urls <- function(){
     ver <- utils:::.BioC_version_associated_with_R_version();
     c(
-      BioCsoft = sprintf("https://bioconductor.org/packages/%s/bioc", ver),
-      BioCann = sprintf("https://bioconductor.org/packages/%s/data/annotation", ver),
-      BioCexp = sprintf("https://bioconductor.org/packages/%s/data/experiment", ver)
+      BioCsoft = sprintf("https://bioconductor.posit.co/packages/%s/bioc", ver),
+      BioCann = sprintf("https://bioconductor.posit.co/packages/%s/data/annotation", ver),
+      BioCexp = sprintf("https://bioconductor.posit.co/packages/%s/data/experiment", ver)
     )
   }
   options(repos = c(
