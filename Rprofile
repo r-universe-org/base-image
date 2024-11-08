@@ -24,7 +24,7 @@ local({
 
   my_universe <- Sys.getenv("MY_UNIVERSE")
   if(nchar(my_universe)){
-    options(repos = c(binaries = binary_universe(my_universe), universe = my_universe, getOption("repos")))
+    options(repos = c(universe = binary_universe(my_universe), getOption("repos")))
   }
 })
 
