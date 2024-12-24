@@ -129,9 +129,9 @@ RUN \
   rm pandoc-3.2.1-linux-amd64.tar.gz
 
 RUN \
-  curl -OL "https://github.com/quarto-dev/quarto-cli/releases/download/v1.5.54/quarto-1.5.54-linux-amd64.deb" &&\
-  dpkg -i quarto-1.5.54-linux-amd64.deb &&\
-  rm quarto-1.5.54-linux-amd64.deb
+  curl -OL "https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.39/quarto-1.6.39-linux-amd64.deb" &&\
+  dpkg -i quarto-1.6.39-linux-amd64.deb &&\
+  rm quarto-1.6.39-linux-amd64.deb
 
 RUN \
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
