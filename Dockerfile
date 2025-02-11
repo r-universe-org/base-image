@@ -1,11 +1,11 @@
 FROM ubuntu:noble AS base_image
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 ENV CARGO_HOME="/opt/.cargo"
 ENV RUSTUP_HOME="/opt/.rustup"
 ENV PATH="/root/bin:/opt/.cargo/bin:${PATH}"
 
-FROM base_image as builder
+FROM base_image AS builder
 
 RUN \
     apt-get update && \
