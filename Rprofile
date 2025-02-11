@@ -13,13 +13,26 @@ local({
       BioCexp = sprintf("https://bioconductor.posit.co/packages/%s/data/experiment", ver)
     )
   }
-  options(repos = c(
-    P3M = sprintf("https://p3m.dev/all/__linux__/%s/latest", distro),
-    BIOC = binary_universe("https://bioc.r-universe.dev"),
-    CRAN = "https://cloud.r-project.org",
-    CRANHAVEN = binary_universe("https://cranhaven.r-universe.dev"),
-    bioc_urls()
-  ))
+
+  # If a specific cran version is set, use only that
+  cran_version <- Sys.getenv("CRAN_VERSION")
+  if(nchar(cran_version)){
+    options(repos = c(
+      CRAN = sprintf("https://p3m.dev/cran/__linux__/%s/%s", distro, cran_version),
+      BIOC = binary_universe("https://bioc.r-universe.dev"),
+      bioc_urls()
+    ))
+  } else {
+    options(repos = c(
+      P3M = sprintf("https://p3m.dev/all/__linux__/%s/latest", distro),
+      BIOC = binary_universe("https://bioc.r-universe.dev"),
+      CRAN = "https://cloud.r-project.org",
+      CRANHAVEN = binary_universe("https://cranhaven.r-universe.dev"),
+      bioc_urls()
+    ))
+  }
+
+  # Needed by p3m
   options(HTTPUserAgent = sprintf("R/%s R (%s)", getRversion(), paste(getRversion(), R.version$platform, R.version$arch, R.version$os)))
 
   my_universe <- Sys.getenv("MY_UNIVERSE")
