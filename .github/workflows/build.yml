@@ -41,6 +41,7 @@ jobs:
           tags: |
             runiverse/base:latest
             ghcr.io/${{github.repository}}:latest
+            ghcr.io/${{github.repository}}:release
 
       - name: Build and push
         uses: docker/build-push-action@v5
