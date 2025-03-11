@@ -124,14 +124,14 @@ RUN \
 
 # Use recent pandoc for quarto
 RUN \
-  curl -OL "https://github.com/jgm/pandoc/releases/download/3.2.1/pandoc-3.2.1-linux-amd64.tar.gz" &&\
-  tar xzvf pandoc-3.2.1-linux-amd64.tar.gz -C/usr/local --strip 1 &&\
-  rm pandoc-3.2.1-linux-amd64.tar.gz
+  curl -L -o pandoc.tar.gz "https://github.com/jgm/pandoc/releases/download/3.2.1/pandoc-3.2.1-linux-$(dpkg --print-architecture).tar.gz" &&\
+  tar xzvf pandoc.tar.gz -C/usr/local --strip 1 &&\
+  rm pandoc.tar.gz
 
 RUN \
-  curl -OL "https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.40/quarto-1.6.40-linux-amd64.deb" &&\
-  dpkg -i quarto-1.6.40-linux-amd64.deb &&\
-  rm quarto-1.6.40-linux-amd64.deb
+  curl -L -o quarto.deb "https://github.com/quarto-dev/quarto-cli/releases/download/v1.6.40/quarto-1.6.40-linux-$(dpkg --print-architecture).deb" &&\
+  dpkg -i quarto.deb &&\
+  rm quarto.deb
 
 RUN \
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
@@ -140,8 +140,7 @@ COPY Renviron /etc/R/Renviron.site
 COPY Rprofile /etc/R/Rprofile.site
 
 # Install TinyTex + common packages and put it on the PATH
-RUN R -e 'install.packages("tinytex");tinytex:::install_prebuilt("TinyTeX")' && \
-    rm -f TinyTeX.tar.gz && \
+RUN R -e 'install.packages("tinytex");tinytex::install_tinytex()' && \
     tlmgr option repository https://ctan.math.illinois.edu/systems/texlive/tlnet &&\
     tlmgr install inputenx
 
