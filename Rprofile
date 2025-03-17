@@ -22,6 +22,12 @@ local({
       BIOC = binary_universe("https://bioc.r-universe.dev"),
       bioc_urls()
     ))
+  } else if(grepl("development", R.version[['status']])) {
+    options(repos = c(
+      CRAN = binary_universe("https://cran.r-universe.dev"),
+      BIOC = binary_universe("https://bioc.r-universe.dev"),
+      bioc_urls()
+    ))
   } else {
     options(repos = c(
       P3M = sprintf("https://p3m.dev/all/__linux__/%s/latest", distro),
