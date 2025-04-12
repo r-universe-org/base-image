@@ -6,3 +6,6 @@ _R_SHLIB_STRIP_=true
 DISABLE_STATIC_LIBV8=1
 USE_SYSTEM_LIBGIT2=1
 ARROW_R_DEV=true
+
+# Should be 'devel' version
+R_BIOC_VERSION=3.20
