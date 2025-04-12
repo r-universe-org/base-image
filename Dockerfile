@@ -139,6 +139,11 @@ RUN \
 COPY Renviron /etc/R/Renviron.site
 COPY Rprofile /etc/R/Rprofile.site
 
+# Set bioc version to 'devel'
+RUN \
+  BIOC_DEVEL=$(curl -sSLf https://bioconductor.org/config.yaml | grep devel_version | grep -oh '\d\.\d\d') && \
+  echo "R_BIOC_VERSION=${BIOC_DEVEL}" >> /etc/R/Renviron.site
+
 # Install TinyTex + common packages and put it on the PATH
 RUN R -e 'install.packages("tinytex");tinytex::install_tinytex(bundle="TinyTeX")' && \
     tlmgr update --self && \
