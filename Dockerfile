@@ -152,6 +152,9 @@ RUN \
   rm -f /etc/ImageMagick-6/policy.xml &&\
   sed -i.bak 's|-g ||g' /etc/R/Makeconf
 
+# Workaround for packages depending on float:::ldflags() such as rsparse
+RUN (cd /usr/lib/x86_64-linux-gnu; ln -s libopenblas.so.0 libopenblas.so)
+
 # Squash builder image into
 FROM base_image
 COPY --from=builder / /
