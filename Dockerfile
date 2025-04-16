@@ -12,7 +12,6 @@ RUN \
     apt-get -y dist-upgrade && \
     apt-get install -y software-properties-common && \
     add-apt-repository -y ppa:marutter/rrutter4.0 && \
-    add-apt-repository -y ppa:edd/misc && \
     apt-get update && \
     apt-get install -y \
     cmake \
@@ -139,6 +138,11 @@ RUN \
 
 COPY Renviron /etc/R/Renviron.site
 COPY Rprofile /etc/R/Rprofile.site
+
+RUN \
+  BIOC_DEVEL=$(curl -sS --fail https://bioconductor.org/config.yaml | grep 'devel_version' | grep -o '[.0-9]*') &&\
+  echo "R_BIOC_VERSION=${BIOC_DEVEL}" >> /etc/R/Renviron.site &&\
+  cat /etc/R/Renviron.site
 
 # Install TinyTex + common packages and put it on the PATH
 RUN R -e 'install.packages("tinytex");tinytex::install_tinytex(bundle="TinyTeX")' && \
