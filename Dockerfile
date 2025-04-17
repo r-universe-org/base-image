@@ -139,11 +139,10 @@ RUN \
 COPY Renviron /etc/R/Renviron.site
 COPY Rprofile /etc/R/Rprofile.site
 
-#RUN \
-#  BIOC_DEVEL=$(curl -sS --fail https://bioconductor.org/config.yaml | grep 'release_version' | grep -o '[.0-9]*') &&\
-#  echo "R_BIOC_VERSION=${BIOC_DEVEL}" >> /etc/R/Renviron.site &&\
-#  curl -sS -o /dev/null --fail "https://bioconductor.posit.co/packages/$BIOC_DEVEL/bioc/src/contrib/PACKAGES" &&\
-#  cat /etc/R/Renviron.site
+RUN \
+  BIOC_DEVEL=$(curl -sS --fail https://bioconductor.org/config.yaml | grep 'devel_version' | grep -o '[.0-9]*') &&\
+  echo "R_BIOC_VERSION=${BIOC_DEVEL}" >> /etc/R/Renviron.site &&\
+  cat /etc/R/Renviron.site
 
 # Install TinyTex + common packages and put it on the PATH
 RUN R -e 'install.packages("tinytex");tinytex::install_tinytex(bundle="TinyTeX")' && \
@@ -158,7 +157,7 @@ RUN \
   sed -i.bak 's|-g ||g' /etc/R/Makeconf
 
 # Workaround for packages depending on float:::ldflags() such as rsparse
-RUN (cd /usr/lib/x86_64-linux-gnu; ln -s libopenblas.so.0 libopenblas.so)
+RUN (cd "/usr/lib/$(arch)-linux-gnu"; ln -s libopenblas.so.0 libopenblas.so)
 
 # Squash builder image into
 FROM base_image
