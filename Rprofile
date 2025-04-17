@@ -6,11 +6,10 @@ local({
     sprintf("%s/bin/linux/%s/%s", universe, distro, r_branch)
   }
   bioc_urls <- function(){
-    ver <- utils:::.BioC_version_associated_with_R_version();
     c(
-      BioCsoft = sprintf("https://bioconductor.posit.co/packages/%s/bioc", ver),
-      BioCann = sprintf("https://bioconductor.posit.co/packages/%s/data/annotation", ver),
-      BioCexp = sprintf("https://bioconductor.posit.co/packages/%s/data/experiment", ver)
+      BioCsoft = "https://bioconductor.posit.co/packages/devel/bioc",
+      BioCann = "https://bioconductor.posit.co/packages/devel/data/annotation",
+      BioCexp = "https://bioconductor.posit.co/packages/devel/data/experiment"
     )
   }
 
@@ -31,9 +30,8 @@ local({
   } else {
     options(repos = c(
       P3M = sprintf("https://p3m.dev/all/__linux__/%s/latest", distro),
+      CRAN = binary_universe("https://cran.r-universe.dev"),
       BIOC = binary_universe("https://bioc.r-universe.dev"),
-      CRAN = "https://cloud.r-project.org",
-      CRANHAVEN = binary_universe("https://cranhaven.r-universe.dev"),
       bioc_urls()
     ))
   }

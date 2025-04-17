@@ -139,11 +139,11 @@ RUN \
 COPY Renviron /etc/R/Renviron.site
 COPY Rprofile /etc/R/Rprofile.site
 
-RUN \
-  BIOC_DEVEL=$(curl -sS --fail https://bioconductor.org/config.yaml | grep 'release_version' | grep -o '[.0-9]*') &&\
-  echo "R_BIOC_VERSION=${BIOC_DEVEL}" >> /etc/R/Renviron.site &&\
-  curl -sS -o /dev/null --fail "https://bioconductor.posit.co/packages/$BIOC_DEVEL/bioc/src/contrib/PACKAGES" &&\
-  cat /etc/R/Renviron.site
+#RUN \
+#  BIOC_DEVEL=$(curl -sS --fail https://bioconductor.org/config.yaml | grep 'release_version' | grep -o '[.0-9]*') &&\
+#  echo "R_BIOC_VERSION=${BIOC_DEVEL}" >> /etc/R/Renviron.site &&\
+#  curl -sS -o /dev/null --fail "https://bioconductor.posit.co/packages/$BIOC_DEVEL/bioc/src/contrib/PACKAGES" &&\
+#  cat /etc/R/Renviron.site
 
 # Install TinyTex + common packages and put it on the PATH
 RUN R -e 'install.packages("tinytex");tinytex::install_tinytex(bundle="TinyTeX")' && \
