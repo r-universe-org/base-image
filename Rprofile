@@ -3,7 +3,7 @@ local({
   r_branch <- substr(getRversion(), 1, 3)
   distro <- system2('lsb_release', '-sc', stdout = TRUE)
   binary_universe <- function(universe){
-    sprintf("%s/bin/linux/%s/%s", universe, distro, r_branch)
+    sprintf("%s/bin/linux/%s-%s/%s", universe, distro, R.version$arch, r_branch)
   }
   bioc_urls <- function(){
     c(
