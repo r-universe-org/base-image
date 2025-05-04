@@ -21,7 +21,8 @@ local({
       BIOC = binary_universe("https://bioc.r-universe.dev"),
       bioc_urls()
     ))
-  } else if(grepl("development", R.version[['status']])) {
+  } else if(grepl("development", R.version[['status']]) || grepl("aarch", R.version$arch)) {
+    # TODO: remove condition above once p3m has arm64 binaries
     options(repos = c(
       CRAN = binary_universe("https://cran.r-universe.dev"),
       BIOC = binary_universe("https://bioc.r-universe.dev"),
