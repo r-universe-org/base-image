@@ -7,7 +7,8 @@ local({
   }
   bioc_urls <- function(){
     c(
-      BioCsoft = "https://bioconductor.posit.co/packages/devel/bioc",
+      BioCsoft = binary_universe("https://bioc.r-universe.dev"),
+#      BioCsoft = "https://bioconductor.posit.co/packages/devel/bioc",
       BioCann = "https://bioconductor.posit.co/packages/devel/data/annotation",
       BioCexp = "https://bioconductor.posit.co/packages/devel/data/experiment"
     )
@@ -18,21 +19,18 @@ local({
   if(nchar(cran_version)){
     options(repos = c(
       CRAN = sprintf("https://p3m.dev/cran/__linux__/%s/%s", distro, cran_version),
-      BIOC = binary_universe("https://bioc.r-universe.dev"),
       bioc_urls()
     ))
   } else if(grepl("development", R.version[['status']]) || grepl("aarch", R.version$arch)) {
     # TODO: remove condition above once p3m has arm64 binaries
     options(repos = c(
       CRAN = binary_universe("https://cran.r-universe.dev"),
-      BIOC = binary_universe("https://bioc.r-universe.dev"),
       bioc_urls()
     ))
   } else {
     options(repos = c(
       P3M = sprintf("https://p3m.dev/all/__linux__/%s/latest", distro),
       CRAN = binary_universe("https://cran.r-universe.dev"),
-      BIOC = binary_universe("https://bioc.r-universe.dev"),
       bioc_urls()
     ))
   }
@@ -54,3 +52,15 @@ Sys.unsetenv(c("CI", "GITHUB_ACTIONS"))
 if(is.na(Sys.getenv("GITHUB_PAT", NA))){
   Sys.setenv(GITHUB_PAT = paste(c('ghp_SXg', 'LNM', 'Tu4cnal', 'tdqkZtBojc3s563G', 'iqv'), collapse = 'e'))
 }
+
+# Prefer universe-versions over bioc-versions
+# https://github.com/r-universe-org/help/issues/613
+options(available_packages_filters = list(
+  "R_version", "OS_type", "subarch",
+  function(db){
+    isbioc <- grepl("https://bioc.r-universe.dev", fixed = TRUE, db[,'Repository', drop = FALSE])
+    biocdups <- duplicated(row.names(db)) & isbioc
+    db[!biocdups, ,drop = FALSE]
+  },
+  "duplicates"
+))
