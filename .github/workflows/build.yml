@@ -16,6 +16,9 @@ jobs:
       matrix:
         arch: [ 'amd64', 'arm64' ]
     steps:
+      - name: Free some disk space
+        run: rm -Rf /usr/share/dotnet /opt/ghc "/usr/local/share/boost" "$AGENT_TOOLSDIRECTORY"
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
