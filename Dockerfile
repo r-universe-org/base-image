@@ -122,21 +122,20 @@ RUN \
 #    rm -fv /etc/apt/sources.list.d/* && \
 #    apt-get clean
 
-# Use recent pandoc for quarto
+# Use recent pandoc
 #RUN \
 #  curl -L -o pandoc.tar.gz "https://github.com/jgm/pandoc/releases/download/3.7.0.1/pandoc-3.7.0.1-linux-$(dpkg --print-architecture).tar.gz" &&\
 #  tar xzvf pandoc.tar.gz -C/usr/local --strip 1 &&\
 #  rm pandoc.tar.gz
 
+# Install quarto and also put pandoc on the path
 RUN \
   curl -L -o quarto.deb "https://github.com/quarto-dev/quarto-cli/releases/download/v1.8.24/quarto-1.8.24-linux-$(dpkg --print-architecture).deb" &&\
   dpkg -i quarto.deb &&\
-  rm quarto.deb
-
-# Put pandoc from quarto on the path
-RUN \
   cp /opt/quarto/bin/tools/pandoc /usr/local/bin/ &&\
-  pandoc --version
+  rm quarto.deb &&\
+  pandoc --version &&\
+  quarto --version
 
 RUN \
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | bash -s -- -y
