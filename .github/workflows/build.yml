@@ -61,6 +61,7 @@ jobs:
   manifest:
     runs-on: ubuntu-24.04
     needs: [build]
+    if: always()
     steps:
       - name: Free some disk space
         run: rm -Rf /usr/share/dotnet /opt/ghc "/usr/local/share/boost" "$AGENT_TOOLSDIRECTORY"
