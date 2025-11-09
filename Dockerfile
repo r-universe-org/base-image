@@ -99,6 +99,7 @@ RUN \
     protobuf-compiler-grpc \
     python3-numpy \
     python3-pip \
+    python3-venv \
     r-base-dev \
     r-cran-rjava \
     rsync \
