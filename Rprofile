@@ -5,13 +5,20 @@ local({
   binary_universe <- function(universe){
     sprintf("%s/bin/linux/%s-%s/%s", universe, distro, R.version$arch, r_branch)
   }
-  bioc_urls <- function(){
-    c(
-      BioCsoft = binary_universe("https://bioc.r-universe.dev"),
-#      BioCsoft = "https://bioconductor.posit.co/packages/devel/bioc",
-      BioCann = "https://bioconductor.posit.co/packages/devel/data/annotation",
-      BioCexp = "https://bioconductor.posit.co/packages/devel/data/experiment"
-    )
+  bioc_urls <- function() {
+    if(Sys.getenv("UNIVERSE_NAME") == 'bioc-release'){
+      c(
+        BioCsoft = "https://bioconductor.posit.co/packages/release/bioc",
+        BioCann = "https://bioconductor.posit.co/packages/release/data/annotation",
+        BioCexp = "https://bioconductor.posit.co/packages/release/data/experiment"
+      )
+    } else {
+     c(
+        BioCsoft = binary_universe("https://bioc.r-universe.dev"),
+        BioCann = "https://bioconductor.posit.co/packages/devel/data/annotation",
+        BioCexp = "https://bioconductor.posit.co/packages/devel/data/experiment"
+      )
+    }
   }
 
   # If a specific cran version is set, use only that
