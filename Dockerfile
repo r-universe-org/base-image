@@ -63,6 +63,7 @@ RUN \
     libnng-dev \
     libopenbabel-dev \
     libopenblas0 \
+    libopenblas-dev \
     libopencv-dev \
     libopenmpi-dev \
     libpng-dev \
