@@ -5,7 +5,7 @@ FROM $BASE_IMAGE
 # r-devel origin:(arm) https://github.com/r-hub/R/releases/download/vdevel/r-rstudio-ubuntu-2404-devel_1_arm64.deb
 
 RUN if [ $(dpkg --print-architecture) = "arm64" ]; then \
-	DOWNLOAD="https://github.com/r-hub/R/releases/download/vdevel/r-rstudio-ubuntu-2404-devel_1_arm64.deb"; \
+	DOWNLOAD="https://cdn.posit.co/r/ubuntu-2404/pkgs/r-devel_1_arm64.deb"; \
 	else \
 	DOWNLOAD="https://cdn.posit.co/r/ubuntu-2404/pkgs/r-devel_1_amd64.deb"; \
 	fi &&\
