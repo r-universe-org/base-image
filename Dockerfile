@@ -33,6 +33,7 @@ RUN \
     libboost-filesystem-dev \
     libboost-program-options-dev \
     libcairo2-dev \
+    libclblast-dev \
     libcurl4-openssl-dev \
     libdb-dev \
     libeigen3-dev \
@@ -95,6 +96,7 @@ RUN \
     libzmq3-dev \
     mono-runtime \
     ocl-icd-opencl-dev \
+    opencl-headers \
     protobuf-compiler \
     protobuf-compiler-grpc \
     python3-numpy \
