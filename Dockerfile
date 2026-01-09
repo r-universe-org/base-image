@@ -36,7 +36,6 @@ RUN \
     libclblast-dev \
     libcurl4-openssl-dev \
     libdb-dev \
-    libeccodes-dev \
     libeigen3-dev \
     libelf-dev \
     libfftw3-dev \
