@@ -35,8 +35,7 @@ local({
     ))
   } else {
     options(repos = c(
-      P3M = sprintf("https://p3m.dev/all/__linux__/%s/latest", distro),
-      CRAN = binary_universe("https://cran.r-universe.dev"),
+      CRAN = sprintf("https://p3m.dev/all/__linux__/%s/latest", distro),
       bioc_urls()
     ))
   }
