@@ -36,6 +36,7 @@ local({
   } else {
     options(repos = c(
       CRAN = sprintf("https://p3m.dev/all/__linux__/%s/latest", distro),
+      cranhaven = binary_universe("https://cranhaven.r-universe.dev"),
       bioc_urls()
     ))
   }
