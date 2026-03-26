@@ -155,7 +155,9 @@ COPY Rprofile /etc/R/Rprofile.site
 RUN R -e 'install.packages("tinytex");tinytex::install_tinytex(bundle="TinyTeX")' && \
     tlmgr update --self && \
     tlmgr option repository https://ctan.math.illinois.edu/systems/texlive/tlnet &&\
-    tlmgr install inputenx
+    tlmgr install inputenx &&\
+    tlmgr install pstricks &&\
+    tlmgr install bera
 
 # Disable debug flags and things that dont work in docker
 RUN \
