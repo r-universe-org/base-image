@@ -33,7 +33,7 @@ local({
       CRAN = sprintf("https://p3m.dev/cran/__linux__/%s/%s", distro, cran_version),
       bioc_urls()
     ))
-  } else if(grepl("development", R.version[['status']])) {
+  } else if(grepl("development|alpha|beta|rc", R.version[['status']])) {
     options(repos = c(
       CRAN = binary_universe("https://cran.r-universe.dev"),
       bioc_urls()
