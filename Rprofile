@@ -21,7 +21,8 @@ local({
     } else {
      c(
         BioCsoft = binary_universe("https://bioc.r-universe.dev"),
-        BioCann = "https://bioconductor.posit.co/packages/devel/data/annotation"
+        BioCann = "https://bioconductor.posit.co/packages/devel/data/annotation",
+        BioCexp = "https://bioconductor.posit.co/packages/devel/data/experiment"
       )
     }
   }
