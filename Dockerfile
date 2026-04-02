@@ -89,6 +89,7 @@ RUN \
     libtiff-dev \
     libudunits2-dev \
     libunwind-dev \
+    libuv1-dev \
     libv8-dev \
     libwebp-dev \
     libxml2-dev \
