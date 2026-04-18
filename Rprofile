@@ -1,6 +1,6 @@
 # Repositories
 local({
-  r_branch <- substr(getRversion(), 1, 3)
+  r_branch <- sub('^(\\d+\\.\\d+).*', '\\1', getRversion())
   distro <- system2('lsb_release', '-sc', stdout = TRUE)
   binary_universe <- function(universe){
     sprintf("%s/bin/linux/%s-%s/%s", universe, distro, R.version$arch, r_branch)
