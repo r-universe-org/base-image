@@ -41,14 +41,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build and push
+      - name: Build for R-release
         uses: docker/build-push-action@v6
         with:
           push: true
           tags: |
             ghcr.io/${{github.repository}}:release_${{matrix.arch}}
 
-      - name: Build and push
+      - name: Build for R-devel
         uses: docker/build-push-action@v6
         with:
           push: true
@@ -57,6 +57,16 @@ jobs:
             BASE_IMAGE=ghcr.io/${{github.repository}}:release_${{matrix.arch}}
           tags: |
             ghcr.io/${{github.repository}}:devel_${{matrix.arch}}
+
+      - name: Build for R-oldrel
+        uses: docker/build-push-action@v6
+        with:
+          push: true
+          context: oldrel
+          build-args: |
+            BASE_IMAGE=ghcr.io/${{github.repository}}:release_${{matrix.arch}}
+          tags: |
+            ghcr.io/${{github.repository}}:oldrel_${{matrix.arch}}
 
   manifest:
     runs-on: ubuntu-24.04
@@ -106,3 +116,12 @@ jobs:
           sources: |
             ghcr.io/${{github.repository}}:devel_amd64
             ghcr.io/${{github.repository}}:devel_arm64
+
+      - uses: int128/docker-manifest-create-action@v2
+        with:
+          tags: |
+            runiverse/base:oldrel
+            ghcr.io/${{github.repository}}:oldrel
+          sources: |
+            ghcr.io/${{github.repository}}:oldrel_amd64
+            ghcr.io/${{github.repository}}:oldrel_arm64
