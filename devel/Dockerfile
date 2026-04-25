@@ -1,9 +1,9 @@
 ARG BASE_IMAGE=ghcr.io/r-universe-org/base-image:latest
 FROM $BASE_IMAGE
 
+ENV VERSION="devel"
 #ENV VERSION="next"
-#ENV VERSION="devel"
-ENV VERSION="4.6.0"
+#ENV VERSION="4.6.0"
 
 # R-devel dailies from: https://github.com/rstudio/r-builds#README
 

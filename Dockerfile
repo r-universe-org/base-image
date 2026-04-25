@@ -13,7 +13,7 @@ RUN \
     apt-get update && \
     apt-get -y dist-upgrade && \
     apt-get install -y software-properties-common && \
-    add-apt-repository -y ppa:marutter/rrutter4.0 && \
+    add-apt-repository -y ppa:cran/r-4.6 && \
     apt-get update && \
     apt-get install -y \
     cmake \
@@ -130,13 +130,13 @@ RUN \
 
 # Use recent pandoc
 #RUN \
-#  curl -L -o pandoc.tar.gz "https://github.com/jgm/pandoc/releases/download/3.7.0.1/pandoc-3.7.0.1-linux-$(dpkg --print-architecture).tar.gz" &&\
+#  curl -L -o pandoc.tar.gz "https://github.com/jgm/pandoc/releases/download/3.9.0.2/pandoc-3.9.0.2-linux-$(dpkg --print-architecture).tar.gz" &&\
 #  tar xzvf pandoc.tar.gz -C/usr/local --strip 1 &&\
 #  rm pandoc.tar.gz
 
 # Install quarto and also put pandoc on the path
 RUN \
-  curl -L -o quarto.deb "https://github.com/quarto-dev/quarto-cli/releases/download/v1.8.24/quarto-1.8.24-linux-$(dpkg --print-architecture).deb" &&\
+  curl -L -o quarto.deb "https://github.com/quarto-dev/quarto-cli/releases/download/v1.9.37/quarto-1.9.37-linux-$(dpkg --print-architecture).deb" &&\
   dpkg -i quarto.deb &&\
   cp /opt/quarto/bin/tools/pandoc /usr/local/bin/ &&\
   rm quarto.deb &&\
