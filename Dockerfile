@@ -20,6 +20,7 @@ RUN \
     coinor-libcbc-dev  \
     coinor-libsymphony-dev \
     curl \
+    default-jre \
     flac \
     fonts-emojione \
     git \
@@ -106,7 +107,6 @@ RUN \
     python3-pip \
     python3-venv \
     r-base-dev \
-    r-cran-rjava \
     rsync \
     tesseract-ocr-eng \
     texinfo \
