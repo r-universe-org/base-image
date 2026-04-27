@@ -4,3 +4,6 @@ R_PDFVIEWER="echo"
 _R_SHLIB_STRIP_=true
 ARROW_R_DEV=true
 R_DEFAULT_INTERNET_TIMEOUT=300
+
+# Disable ANSI colors
+QUARTO_KNITR_RSCRIPT_ARGS="--no-site-file"
