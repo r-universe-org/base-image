@@ -154,6 +154,9 @@ COPY Rprofile /etc/R/Rprofile.site
 #  echo "R_BIOC_VERSION=${BIOC_DEVEL}" >> /etc/R/Renviron.site &&\
 #  cat /etc/R/Renviron.site
 
+# Assert we got the PPA version
+RUN R -e "stopifnot(getRversion() >= '4.6')"
+
 # Install TinyTex + common packages and put it on the PATH
 RUN R -e 'install.packages("tinytex");tinytex::install_tinytex(bundle="TinyTeX")' && \
     tlmgr update --self && \
