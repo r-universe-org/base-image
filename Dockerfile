@@ -9,11 +9,17 @@ ENV LANG=en_US.UTF-8
 
 FROM base_image AS builder
 
+# Official Ubuntu/PPA mirrors seem to be flaky
+RUN \
+  echo "deb [trusted=yes] http://cran.r-project.org/bin/linux/ubuntu noble-cran40/" > /etc/apt/sources.list.d/cran.list &&\
+  sed -i /etc/apt/sources.list.d/ubuntu.sources \
+    -e 's|archive\.ubuntu\.com|mirror.nl.leaseweb.net|g' \
+    -e 's|security\.ubuntu\.com|mirror.nl.leaseweb.net|g' \
+    -e 's|ports\.ubuntu\.com|mirror.nl.leaseweb.net|g' 
+
 RUN \
     apt-get update && \
     apt-get -y dist-upgrade && \
-    apt-get install -y software-properties-common && \
-    add-apt-repository -y ppa:cran/r-4.6 && \
     apt-get update && \
     apt-get install -y \
     cmake \
