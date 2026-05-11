@@ -171,6 +171,10 @@ RUN R -e 'install.packages("tinytex");tinytex::install_tinytex(bundle="TinyTeX")
     tlmgr install pstricks &&\
     tlmgr install bera
 
+# Update (jss.cls is broken with latest latex)
+RUN curl -sSL "https://raw.githubusercontent.com/r-devel/r-svn/HEAD/share/texmf/tex/latex/jss.cls" \
+    -o /usr/share/R/share/texmf/tex/latex/jss.cls
+
 # Disable debug flags and things that dont work in docker
 RUN \
   rm -f /usr/bin/timedatectl &&\
