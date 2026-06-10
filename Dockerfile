@@ -6,6 +6,7 @@ ENV RUSTUP_HOME="/opt/.rustup"
 ENV PATH="/root/bin:/opt/.cargo/bin:${PATH}"
 ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
+ENV GIT_TERMINAL_PROMPT=0
 
 FROM base_image AS builder
 
