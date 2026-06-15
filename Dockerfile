@@ -172,7 +172,7 @@ RUN R -e 'install.packages("tinytex");tinytex::install_tinytex(bundle="TinyTeX")
     tlmgr install pstricks &&\
     tlmgr install bera
 
-# Update (jss.cls is broken with latest latex)
+# jss.cls is broken with latest latex (Fixed in R-4.6.1)
 RUN curl -sSL "https://raw.githubusercontent.com/r-devel/r-svn/HEAD/share/texmf/tex/latex/jss.cls" \
     -o /usr/share/R/share/texmf/tex/latex/jss.cls
 
