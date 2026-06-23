@@ -1,4 +1,4 @@
-FROM ubuntu:noble AS base_image
+FROM ubuntu:resolute AS base_image
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV CARGO_HOME="/opt/.cargo"
@@ -12,7 +12,7 @@ FROM base_image AS builder
 
 # Official Ubuntu/PPA mirrors seem to be flaky
 RUN \
-  echo "deb [trusted=yes] http://cran.r-project.org/bin/linux/ubuntu noble-cran40/" > /etc/apt/sources.list.d/cran.list &&\
+  echo "deb [trusted=yes] http://cran.r-project.org/bin/linux/ubuntu resolute-cran40/" > /etc/apt/sources.list.d/cran.list &&\
   sed -i /etc/apt/sources.list.d/ubuntu.sources \
     -e 's|archive\.ubuntu\.com|mirror.nl.leaseweb.net|g' \
     -e 's|security\.ubuntu\.com|mirror.nl.leaseweb.net|g' \

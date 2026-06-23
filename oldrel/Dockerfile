@@ -5,7 +5,7 @@ ENV VERSION="4.5.3"
 
 # R-devel dailies from: https://github.com/rstudio/r-builds#README
 
-RUN curl -o install.deb -LSsf "https://cdn.posit.co/r/ubuntu-2404/pkgs/r-${VERSION}_1_$(dpkg --print-architecture).deb" &&\
+RUN curl -o install.deb -LSsf "https://cdn.posit.co/r/ubuntu-2604/pkgs/r-${VERSION}_1_$(dpkg --print-architecture).deb" &&\
 	apt install --reinstall -y -o=Dpkg::Use-Pty=0 -o=Apt::Cmd::Disable-Script-Warning=1 ./install.deb && rm install.deb &&\
 	sed -i.bak 's|-g ||g' /opt/R/${VERSION}/lib/R/etc/Makeconf &&\
 	cp -f /etc/R/Rprofile.site /opt/R/${VERSION}/lib/R/etc/ &&\
