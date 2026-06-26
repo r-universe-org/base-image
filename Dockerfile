@@ -161,8 +161,6 @@ COPY Rprofile /etc/R/Rprofile.site
 #  echo "R_BIOC_VERSION=${BIOC_DEVEL}" >> /etc/R/Renviron.site &&\
 #  cat /etc/R/Renviron.site
 
-# Assert we got the PPA version
-RUN R -e "stopifnot(getRversion() >= '4.6')"
 
 # Install TinyTex + common packages and put it on the PATH
 RUN R -e 'install.packages("tinytex");tinytex::install_tinytex(bundle="TinyTeX")' && \
@@ -172,9 +170,12 @@ RUN R -e 'install.packages("tinytex");tinytex::install_tinytex(bundle="TinyTeX")
     tlmgr install pstricks &&\
     tlmgr install bera
 
+# Assert we got the PPA version
+RUN R -e "stopifnot(getRversion() >= '4.6.1')"
+
 # jss.cls is broken with latest latex (Fixed in R-4.6.1)
-RUN curl -sSL "https://raw.githubusercontent.com/r-devel/r-svn/HEAD/share/texmf/tex/latex/jss.cls" \
-    -o /usr/share/R/share/texmf/tex/latex/jss.cls
+#RUN curl -sSL "https://raw.githubusercontent.com/r-devel/r-svn/HEAD/share/texmf/tex/latex/jss.cls" \
+#    -o /usr/share/R/share/texmf/tex/latex/jss.cls
 
 # Disable debug flags and things that dont work in docker
 RUN \
