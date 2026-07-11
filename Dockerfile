@@ -186,6 +186,9 @@ RUN \
 # Workaround for packages depending on float:::ldflags() such as rsparse
 RUN (cd "/usr/lib/$(arch)-linux-gnu"; ln -s libopenblas.so.0 libopenblas.so)
 
+# Workaround some legacy autoconf configs like in 'Rdsdp'
+RUN ln -s /usr/share/R/include /usr/lib/R/include
+
 # Squash builder image into
 FROM base_image
 COPY --from=builder / /
