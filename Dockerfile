@@ -168,7 +168,8 @@ RUN R -e 'install.packages("tinytex");tinytex::install_tinytex(bundle="TinyTeX")
     tlmgr option repository https://ctan.math.illinois.edu/systems/texlive/tlnet &&\
     tlmgr install inputenx &&\
     tlmgr install pstricks &&\
-    tlmgr install bera
+    tlmgr install bera &&\
+    tlmgr install fancybox
 
 # Assert we got the PPA version
 RUN R -e "stopifnot(getRversion() >= '4.6.1')"
