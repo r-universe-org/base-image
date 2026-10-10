@@ -10,15 +10,13 @@ local({
       c(
         BioCsoft = "https://bioconductor.posit.co/packages/release/bioc",
         BioCann = "https://bioconductor.posit.co/packages/release/data/annotation",
-        BioCexp = "https://bioconductor.posit.co/packages/release/data/experiment",
-        BioCbook = "https://bioconductor.posit.co/packages/release/books"
+        BioCexp = "https://bioconductor.posit.co/packages/release/data/experiment"
       )
     } else if(Sys.getenv("UNIVERSE_NAME") == 'bioc'){
       c(
         BioCsoft = "https://bioconductor.posit.co/packages/devel/bioc",
         BioCann = "https://bioconductor.posit.co/packages/devel/data/annotation",
-        BioCexp = "https://bioconductor.posit.co/packages/devel/data/experiment",
-        BioCbook = "https://bioconductor.posit.co/packages/devel/books"
+        BioCexp = "https://bioconductor.posit.co/packages/devel/data/experiment"
       )
     } else {
      c(
