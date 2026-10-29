@@ -6,23 +6,24 @@ local({
     sprintf("%s/bin/linux/%s-%s/%s", universe, distro, R.version$arch, r_branch)
   }
   bioc_urls <- function() {
+    mirror <- sub("/+$", "", Sys.getenv('R_BIOC_MIRROR', 'https://bioconductor.org'))
     if(Sys.getenv("UNIVERSE_NAME") == 'bioc-release'){
       c(
-        BioCsoft = "https://bioconductor.posit.co/packages/release/bioc",
-        BioCann = "https://bioconductor.posit.co/packages/release/data/annotation",
-        BioCexp = "https://bioconductor.posit.co/packages/release/data/experiment"
+        BioCsoft = paste0(mirror, "/packages/release/bioc"),
+        BioCann = paste0(mirror, "/packages/release/data/annotation"),
+        BioCexp = paste0(mirror, "/packages/release/data/experiment")
       )
     } else if(Sys.getenv("UNIVERSE_NAME") == 'bioc'){
       c(
-        BioCsoft = "https://bioconductor.posit.co/packages/devel/bioc",
-        BioCann = "https://bioconductor.posit.co/packages/devel/data/annotation",
-        BioCexp = "https://bioconductor.posit.co/packages/devel/data/experiment"
+        BioCsoft = paste0(mirror, "/packages/devel/bioc"),
+        BioCann = paste0(mirror, "/packages/devel/data/annotation"),
+        BioCexp = paste0(mirror, "/packages/devel/data/experiment")
       )
     } else {
      c(
         BioCsoft = binary_universe("https://bioc.r-universe.dev"),
-        BioCann = "https://bioconductor.posit.co/packages/devel/data/annotation",
-        BioCexp = "https://bioconductor.posit.co/packages/devel/data/experiment"
+        BioCann = paste0(mirror, "/packages/devel/data/annotation"),
+        BioCexp = paste0(mirror, "/packages/devel/data/experiment")
       )
     }
   }
