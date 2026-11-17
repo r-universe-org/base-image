@@ -126,6 +126,8 @@ RUN \
     zlib1g-dev && \
     apt-get clean
 
+# Key for cran, silence warnings
+RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
 
 # Patched libraptor2-dev because dependency libcurl4-gnutls-dev conflicts with libcurl4-openssl-dev
 # This is only for ubuntu-jammy; is this no longer needed or should we port it?
