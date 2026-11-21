@@ -126,6 +126,15 @@ RUN \
     zlib1g-dev && \
     apt-get clean
 
+
+# Temporary fix to get JAGS5
+RUN \
+    apt-get install -y software-properties-common &&\
+    add-apt-repository -y ppa:cran/jags5 && \
+    apt-get install -y jags && \
+    rm -fv /etc/apt/sources.list.d/*ppa* && \
+    apt-get clean
+
 # Key for cran, silence warnings
 RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
 
