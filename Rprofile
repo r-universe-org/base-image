@@ -51,6 +51,22 @@ local({
   # Needed by p3m
   options(HTTPUserAgent = sprintf("R/%s R (%s)", getRversion(), paste(getRversion(), R.version$platform, R.version$arch, R.version$os)))
 
+  # Avoids race conditions during mass version bump
+  if(Sys.getenv('BIOC_RELEASE_BOOTSTRAP') ==  'true'){
+    options(repos = c(devel = binary_universe('https://bioc.r-universe.dev'), getOption("repos")))
+  } else {
+    # Prefers universe-versions over bioc-versions (https://github.com/r-universe-org/help/issues/613)
+    options(available_packages_filters = list(
+      "R_version", "OS_type", "subarch",
+      function(db){
+        isbioc <- grepl("https://bioc.r-universe.dev", fixed = TRUE, db[,'Repository', drop = FALSE])
+        biocdups <- duplicated(row.names(db)) & isbioc
+        db[!biocdups, ,drop = FALSE]
+      },
+      "duplicates"
+    ))
+  }
+
   my_universe <- Sys.getenv("MY_UNIVERSE")
   if(nchar(my_universe) && !any(grepl(my_universe, getOption("repos")))){
     options(repos = c(universe = binary_universe(my_universe), getOption("repos")))
@@ -65,15 +81,3 @@ Sys.unsetenv(c("CI", "GITHUB_ACTIONS"))
 if(is.na(Sys.getenv("GITHUB_PAT", NA))){
   Sys.setenv(GITHUB_PAT = paste(c('ghp_SXg', 'LNM', 'Tu4cnal', 'tdqkZtBojc3s563G', 'iqv'), collapse = 'e'))
 }
-
-# Prefer universe-versions over bioc-versions
-# https://github.com/r-universe-org/help/issues/613
-options(available_packages_filters = list(
-  "R_version", "OS_type", "subarch",
-  function(db){
-    isbioc <- grepl("https://bioc.r-universe.dev", fixed = TRUE, db[,'Repository', drop = FALSE])
-    biocdups <- duplicated(row.names(db)) & isbioc
-    db[!biocdups, ,drop = FALSE]
-  },
-  "duplicates"
-))
